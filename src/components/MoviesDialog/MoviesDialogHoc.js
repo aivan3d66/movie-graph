@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import { deleteMovieMutation } from './mutation'
 import { moviesQuery } from '../MoviesTable/queries'
 
-const withGraphqlAdd = graphql(deleteMovieMutation, {
+const withGraphqlDelete = graphql(deleteMovieMutation, {
     props: ({ mutate }) => ({
         deleteMovie: id => mutate({
             variables: id,
@@ -12,4 +12,4 @@ const withGraphqlAdd = graphql(deleteMovieMutation, {
     }),
 });
 
-export default compose(withGraphqlAdd);
+export default compose(withGraphqlDelete);
