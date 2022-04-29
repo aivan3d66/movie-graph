@@ -67,7 +67,7 @@ class MoviesTable extends React.Component {
         const { anchorEl, openDialog, data: activeElem = {} } = this.state
 
         const { classes } = this.props
-
+        console.log(this.props.data)
         return (
             <>
                 <MoviesDialog open={openDialog} handleClose={this.handleDialogClose} id={activeElem.id} />
