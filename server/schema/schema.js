@@ -50,11 +50,11 @@ const Mutation = new GraphQLObjectType({
         addDirector: {
             type: DirectorType,
             args: {
-                name: { type: GraphQLString },
-                age: { type: GraphQLInt },
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                age: { type: new GraphQLNonNull(GraphQLInt) },
             },
             resolve(parent, { name, age }) {
-                const director = new Directors({ name, age })
+                const director = new Directors({ name, age, })
                 return director.save()
             },
         },
@@ -64,28 +64,24 @@ const Mutation = new GraphQLObjectType({
                 name: { type: new GraphQLNonNull(GraphQLString) },
                 genre: { type: new GraphQLNonNull(GraphQLString) },
                 directorId: { type: GraphQLID },
-                rate: { type: GraphQLID },
                 watched: { type: new GraphQLNonNull(GraphQLBoolean) },
+                rate: { type: GraphQLInt },
             },
-            resolve(parent, { name, genre, directorId, rate, watched }) {
-                const movie = new Movies({ name, genre, directorId, rate, watched })
+            resolve(parent, { name, genre, directorId, watched, rate }) {
+                const movie = new Movies({ name, genre, directorId, watched, rate, })
                 return movie.save()
             },
         },
         deleteDirector: {
             type: DirectorType,
-            args: {
-                id: { type: GraphQLID },
-            },
+            args: { id: { type: GraphQLID } },
             resolve(parent, { id }) {
                 return Directors.findByIdAndRemove(id)
             },
         },
         deleteMovie: {
             type: MovieType,
-            args: {
-                id: { type: GraphQLID },
-            },
+            args: { id: { type: GraphQLID } },
             resolve(parent, { id }) {
                 return Movies.findByIdAndRemove(id)
             },
@@ -94,10 +90,10 @@ const Mutation = new GraphQLObjectType({
             type: DirectorType,
             args: {
                 id: { type: GraphQLID },
-                name: { type: GraphQLString },
-                age: { type: GraphQLInt },
+                name: { type: new GraphQLNonNull(GraphQLString) },
+                age: { type: new GraphQLNonNull(GraphQLInt) },
             },
-            resolve(parent, { name, age, id }) {
+            resolve(parent, { id, name, age }) {
                 return Directors.findByIdAndUpdate(
                     id,
                     { $set: { name, age } },
@@ -112,15 +108,13 @@ const Mutation = new GraphQLObjectType({
                 name: { type: new GraphQLNonNull(GraphQLString) },
                 genre: { type: new GraphQLNonNull(GraphQLString) },
                 directorId: { type: GraphQLID },
-                rate: { type: GraphQLID },
-                watched: { type: new GraphQLNonNull(GraphQLID) },
+                watched: { type: new GraphQLNonNull(GraphQLBoolean) },
+                rate: { type: GraphQLInt },
             },
-            resolve(parent, { id, name, genre, rate, watched, directorId }) {
+            resolve(parent, { id, name, genre, directorId, watched, rate }) {
                 return Movies.findByIdAndUpdate(
                     id,
-                    {
-                        $set: { name, genre, directorId, rate, watched },
-                    },
+                    { $set: { name, genre, directorId, watched, rate } },
                     { new: true },
                 )
             },
@@ -147,13 +141,13 @@ const Query = new GraphQLObjectType({
         },
         movies: {
             type: new GraphQLList(MovieType),
-            resolve(parent, args) {
+            resolve() {
                 return Movies.find({})
             },
         },
         directors: {
             type: new GraphQLList(DirectorType),
-            resolve(parent, args) {
+            resolve() {
                 return Directors.find({})
             },
         },
