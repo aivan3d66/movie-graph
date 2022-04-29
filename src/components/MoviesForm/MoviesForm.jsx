@@ -25,13 +25,15 @@ class MoviesForm extends React.Component {
     }
 
     handleSave = () => {
-        const { selectedValue, onClose } = this.props
+        const { selectedValue, onClose, addMovie } = this.props
         const { id, name, genre, rate, directorId, watched } = selectedValue
+        addMovie({ id, name, genre, rate: Number(rate), directorId, watched: Boolean(watched) })
         onClose()
     }
 
     render() {
         const {
+            data = {},
             classes,
             open,
             handleChange,
@@ -40,11 +42,23 @@ class MoviesForm extends React.Component {
             selectedValue = {},
         } = this.props
         const { name, genre, rate, directorId, watched } = selectedValue
-
+        const { directors = [] } = data
         return (
-            <Dialog onClose={this.handleClose} open={open} aria-labelledby='simple-dialog-title'>
-                <DialogTitle className={classes.title} id='simple-dialog-title'>Movie information</DialogTitle>
-                <form className={classes.container} noValidate autoComplete='off'>
+            <Dialog
+                onClose={this.handleClose}
+                open={open}
+                aria-labelledby='simple-dialog-title'
+            >
+                <DialogTitle
+                    className={classes.title}
+                    id='simple-dialog-title'
+                >
+                    Movie information
+                </DialogTitle>
+                <form
+                    className={classes.container}
+                    noValidate autoComplete='off'
+                >
                     <TextField
                         id='outlined-name'
                         label='Name'
@@ -73,7 +87,10 @@ class MoviesForm extends React.Component {
                         margin='normal'
                         variant='outlined'
                     />
-                    <FormControl variant='outlined' className={classes.formControlSelect}>
+                    <FormControl
+                        variant='outlined'
+                        className={classes.formControlSelect}
+                    >
                         <InputLabel
                             ref={ref => {
                                 this.InputLabelRef = ref
@@ -85,7 +102,10 @@ class MoviesForm extends React.Component {
                         <Select
                             value={directorId}
                             onChange={handleSelectChange}
-                            input={<OutlinedInput name='directorId' id='outlined-director' labelWidth={57} />}
+                            input={<OutlinedInput
+                                name='directorId'
+                                id='outlined-director'
+                                labelWidth={57} />}
                         >
                             {directors.map(director => <MenuItem key={director.id}
                                                                  value={director.id}>{director.name}</MenuItem>)}
@@ -97,8 +117,12 @@ class MoviesForm extends React.Component {
                                                value='watched' />}
                             label='Watched movie'
                         />
-                        <Button onClick={this.handleSave} variant='contained' color='primary'
-                                className={classes.button}>
+                        <Button
+                            onClick={this.handleSave}
+                            variant='contained'
+                            color='primary'
+                            className={classes.button}
+                        >
                             <SaveIcon /> Save
                         </Button>
                     </div>
