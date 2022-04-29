@@ -13,7 +13,7 @@ import Directors from '../Directors/Directors'
 import withHocs from './TabsHoc'
 
 const TabContainer = ({ children, dir }) => (
-    <Typography component='div' dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography component='div' dir={dir} style={{ padding: 8 * 3, maxWidth: '768px', margin: '0 auto' }}>
         {children}
     </Typography>
 )
@@ -37,15 +37,25 @@ class SimpleTabs extends React.Component {
         return (
             <div className={classes.root}>
                 <AppBar position='static'>
-                    <Tabs variant='fullWidth' value={value} onChange={this.handleChange}>
+                    <Tabs
+                        variant='fullWidth'
+                        value={value}
+                        onChange={this.handleChange}>
                         <Tab label='Movies' icon={<CameraIcon />} />
                         <Tab label='Directors' icon={<MovieCreationIcon />} />
                     </Tabs>
                 </AppBar>
-                <SwipeableViews axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'} index={value}
-                                onChangeIndex={this.handleChangeIndex}>
-                    <TabContainer dir={theme.direction}><Movies /></TabContainer>
-                    <TabContainer dir={theme.direction}><Directors /></TabContainer>
+                <SwipeableViews
+                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                    index={value}
+                    onChangeIndex={this.handleChangeIndex}
+                >
+                    <TabContainer dir={theme.direction}>
+                        <Movies />
+                    </TabContainer>
+                    <TabContainer dir={theme.direction}>
+                        <Directors />
+                    </TabContainer>
                 </SwipeableViews>
             </div>
         )

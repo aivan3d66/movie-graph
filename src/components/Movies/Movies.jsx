@@ -52,14 +52,24 @@ class Movies extends React.Component {
 
         return (
             <>
-                <MoviesForm handleChange={this.handleChange} handleSelectChange={this.handleSelectChange}
-                            handleCheckboxChange={this.handleCheckboxChange}
-                            selectedValue={{ id, name, genre, watched, rate, directorId }} open={open}
-                            onClose={this.handleClose} />
+                <MoviesForm
+                    handleChange={this.handleChange}
+                    handleSelectChange={this.handleSelectChange}
+                    handleCheckboxChange={this.handleCheckboxChange}
+                    selectedValue={{ id, name, genre, watched, rate, directorId }} open={open}
+                    onClose={this.handleClose}
+                />
                 <div className={classes.wrapper}>
-                    <MoviesTable onOpen={this.handleClickOpen} onClose={this.handleClose} />
-                    <Fab onClick={() => this.handleClickOpen()} color='primary' aria-label='Add'
-                         className={classes.fab}>
+                    <MoviesTable
+                        onOpen={this.handleClickOpen}
+                        onClose={this.handleClose}
+                    />
+                    <Fab
+                        onClick={() => this.handleClickOpen()}
+                        color='primary'
+                        aria-label='Add'
+                        className={classes.fab}
+                    >
                         <AddIcon />
                     </Fab>
                 </div>

@@ -58,7 +58,11 @@ class MoviesTable extends React.Component {
 
         return (
             <>
-                <MoviesDialog open={openDialog} handleClose={this.handleDialogClose} id={activeElem.id} />
+                <MoviesDialog
+                    open={openDialog}
+                    handleClose={this.handleDialogClose}
+                    id={activeElem.id}
+                />
                 <Paper className={classes.root}>
                     <Table>
                         <TableHead>
