@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost'
 
 export const deleteMovieMutation = gql`
-  mutation addMovie($id: ID) {
+  mutation deleteMovie($id: ID) {
     deleteMovie(id: $id) {
       id
     }
