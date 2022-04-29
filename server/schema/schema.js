@@ -54,7 +54,7 @@ const Mutation = new GraphQLObjectType({
                 age: { type: new GraphQLNonNull(GraphQLInt) },
             },
             resolve(parent, { name, age }) {
-                const director = new Directors({ name, age, })
+                const director = new Directors({ name, age })
                 return director.save()
             },
         },
@@ -68,7 +68,7 @@ const Mutation = new GraphQLObjectType({
                 rate: { type: GraphQLInt },
             },
             resolve(parent, { name, genre, directorId, watched, rate }) {
-                const movie = new Movies({ name, genre, directorId, watched, rate, })
+                const movie = new Movies({ name, genre, directorId, watched, rate })
                 return movie.save()
             },
         },
@@ -94,11 +94,7 @@ const Mutation = new GraphQLObjectType({
                 age: { type: new GraphQLNonNull(GraphQLInt) },
             },
             resolve(parent, { id, name, age }) {
-                return Directors.findByIdAndUpdate(
-                    id,
-                    { $set: { name, age } },
-                    { new: true },
-                )
+                return Directors.findByIdAndUpdate(id, { $set: { name, age } }, { new: true })
             },
         },
         updateMovie: {
