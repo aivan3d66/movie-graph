@@ -2,15 +2,19 @@ const express = require('express')
 const { graphqlHTTP } = require('express-graphql')
 const schema = require('../schema/schema')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 const app = express()
-const port = 3000
+const port = 3005
+
+require('dotenv').config()
 
 mongoose
     .connect(process.env.REACT_APP_MONGO_URL)
     .then((res) => console.log('Connected to Mongo DB'))
     .catch(error => console.log(error))
 
+app.use(cors())
 app.use(
     '/graphql',
     graphqlHTTP(async (request, response, graphQLParams) => ({
