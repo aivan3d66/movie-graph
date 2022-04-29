@@ -8,6 +8,9 @@ export const moviesQuery = gql`
       genre
       rate
       watched
+      director {
+        name
+      }
     }
   }
 `
