@@ -12,22 +12,9 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import DeleteIcon from '@material-ui/icons/Delete'
 import CreateIcon from '@material-ui/icons/Create'
-
 import MoviesDialog from '../MoviesDialog/MoviesDialog'
-
 import withHocs from './MoviesTableHoc'
 
-const movies = [
-    { id: 1, name: 'Pulp Fiction', genre: 'Crime', rate: 10, director: { name: 'Quentin Tarantino' }, watched: true },
-    {
-        id: 2,
-        name: 'Lock, Stock and Two Smoking Barrels',
-        genre: 'Crime-comedy',
-        rate: 9,
-        director: { name: 'Guy Ritchie' },
-        watched: false,
-    },
-]
 
 class MoviesTable extends React.Component {
     state = {
@@ -66,8 +53,9 @@ class MoviesTable extends React.Component {
     render() {
         const { anchorEl, openDialog, data: activeElem = {} } = this.state
 
-        const { classes } = this.props
-        console.log(this.props.data)
+        const { classes, data = {} } = this.props
+        const { movies = [] } = data
+
         return (
             <>
                 <MoviesDialog open={openDialog} handleClose={this.handleDialogClose} id={activeElem.id} />
@@ -90,7 +78,7 @@ class MoviesTable extends React.Component {
                                         <TableCell component='th' scope='row'>{movie.name}</TableCell>
                                         <TableCell>{movie.genre}</TableCell>
                                         <TableCell align='right'>{movie.rate}</TableCell>
-                                        <TableCell>{movie.director.name}</TableCell>
+                                        {/*<TableCell>{movie.director.name}</TableCell>*/}
                                         <TableCell>
                                             <Checkbox checked={movie.watched} disabled />
                                         </TableCell>
