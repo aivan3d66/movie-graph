@@ -11,11 +11,27 @@ const client = new ApolloClient({
         typePolicies: {
             Query: {
                 fields: {
+                    movie: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
+                    },
                     movies: {
                         merge(existing, incoming) {
                             return incoming;
                         }
                     },
+                    director: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
+                    },
+                    directors: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
+                    },
+
                 },
             },
         },
