@@ -10,7 +10,7 @@ export default createTheme({
     palette: {
         type: 'dark',
         primary: {
-            main: '#E535AB',
+            main: '#944dff',
         },
         secondary: blue,
         error: red,
