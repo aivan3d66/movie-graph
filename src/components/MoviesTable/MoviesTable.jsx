@@ -72,7 +72,7 @@ class MoviesTable extends React.Component {
 
         const { classes, data = {} } = this.props
         const { movies = [] } = data
-        console.log(movies)
+
         return (
             <>
                 <Paper>
