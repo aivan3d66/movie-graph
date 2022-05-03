@@ -7,6 +7,9 @@ import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 const client = new ApolloClient({
     uri: 'https://git.heroku.com/movie-graph-server.git/graphql',
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+    },
     fetchOptions: {
         mode: 'no-cors',
     },
@@ -16,23 +19,23 @@ const client = new ApolloClient({
                 fields: {
                     movie: {
                         merge(existing, incoming) {
-                            return incoming;
-                        }
+                            return incoming
+                        },
                     },
                     movies: {
                         merge(existing, incoming) {
-                            return incoming;
-                        }
+                            return incoming
+                        },
                     },
                     director: {
                         merge(existing, incoming) {
-                            return incoming;
-                        }
+                            return incoming
+                        },
                     },
                     directors: {
                         merge(existing, incoming) {
-                            return incoming;
-                        }
+                            return incoming
+                        },
                     },
 
                 },
