@@ -6,7 +6,7 @@ import { ApolloProvider } from 'react-apollo'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 
 const client = new ApolloClient({
-    uri: 'https://git.heroku.com/movie-graph-server.git/graphql',
+    uri: 'https://aivan3d66.github.io/movie-graph-back//graphql',
     headers: {
         'Access-Control-Allow-Origin': '*',
     },
