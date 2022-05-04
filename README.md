@@ -2,23 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Stack technologies
+## Technologies
 
 * Front-end: React + GraphQL, Material UI 
-* Back-end: Node.js, MongoDB 
+* Back-end: Node.js + Express, MongoDB 
 
-## Available Scripts
+## Link to Heroku edploy
 
-1) In the 'server' directory:
-
-### `npm dev`
-
-Runs the app in the development mode.\
-Open [http://localhost:3005](http://localhost:3005) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-2) In the 'project' directory:
-
-### `npm start`
+https://movie-graph-front.herokuapp.com/
