@@ -13,7 +13,11 @@ import Directors from '../Directors/Directors'
 import withHocs from './TabsHoc'
 
 const TabContainer = ({ children, dir }) => (
-    <Typography component='div' dir={dir} style={{ padding: 8 * 3, maxWidth: '768px', margin: '0 auto' }}>
+    <Typography component='div' dir={dir} style={{
+        padding: "20px 80px",
+        maxWidth: '1100px',
+        margin: '0 auto',
+    }}>
         {children}
     </Typography>
 )
