@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Technologies
 
-* Front-end: React + GraphQL, Material UI 
-* Back-end: Node.js + Express, MongoDB 
+* Front-end: React, Apollo GraphQL, Material UI 
+* Back-end: Node.js + Express, GraphQL, MongoDB 
 
-## Link to Heroku edploy
+## Link to Heroku deploy
 
 https://movie-graph-front.herokuapp.com/
